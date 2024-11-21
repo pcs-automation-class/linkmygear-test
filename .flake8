@@ -1,0 +1,4 @@
+[flake8]
+# Ignore specific errors
+
+max-line-length = 120

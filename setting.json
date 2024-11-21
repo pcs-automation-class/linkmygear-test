@@ -1,0 +1,14 @@
+{
+  "test_1": {
+    "username": "pcs.automationclass@gmail.com",
+    "password": "1234567"
+  },
+  "test_2": {
+    "username": "pcs@gmail.com",
+    "password": "1234567"
+  },
+  "test_3": {
+    "username": "pcs.automationclass@gmail.com",
+    "password": "1"
+  }
+}
