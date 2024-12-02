@@ -5,21 +5,22 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from base import BasePage
 
+
 class ProfilePage(BasePage):
     def __init__(self):
         super().__init__()
         self.page_my_profile = (By.XPATH, "//button[contains(text(), 'My Profile')]")
-        self.first_name_field = (By.XPATH, "//div[text()='Please input first name']/preceding-sibling::div/" \
+        self.first_name_field = (By.XPATH, "//div[text()='Please input first name']/preceding-sibling::div/" 
                                            "/input[@class='el-input__inner']")
-        self.last_name_field = (By.XPATH, "//div[text()='Please select last name']/preceding-sibling::div/" \
-                                           "/input[@class='el-input__inner']")
-        self.email_field = (By.XPATH, "//div[@class='el-input__wrapper']//input[@class='el-input__inner' and " \
+        self.last_name_field = (By.XPATH, "//div[text()='Please select last name']/preceding-sibling::div/"
+                                          "/input[@class='el-input__inner']")
+        self.email_field = (By.XPATH, "//div[@class='el-input__wrapper']//input[@class='el-input__inner' and " 
                                       "@type='text' and @disabled]")
         self.add_phone_button = (By.XPATH, "//button[contains(text(), 'Add Phone')]")
-        self.select_prefix = (By.XPATH, "//div[@class='el-select']/div[@class='el-select__wrapper is-filterable " \
+        self.select_prefix = (By.XPATH, "//div[@class='el-select']/div[@class='el-select__wrapper is-filterable " 
                                         "el-tooltip__trigger el-tooltip__trigger']")
         self.enter_phone = (By.XPATH, "//input[@type='text' and @placeholder='Enter Phone']")
-        self.delete_phone = (By.XPATH, "//div[@class='repeater-input']//button[@type='button']" )
+        self.delete_phone = (By.XPATH, "//div[@class='repeater-input']//button[@type='button']")
         self.sms_checkbox = (By.XPATH, "//span[@class='el-checkbox__inner']")
         self.save_button = (By.XPATH, "//button[contains(text(), 'Save')]")
         self.current_password_field = (By.XPATH, "")
