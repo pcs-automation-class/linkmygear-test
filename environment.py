@@ -20,11 +20,11 @@ def before_all(context):
 
 def before_scenario(context, scenario):
     if "EMULATE" not in scenario.name:
-        if context.settings["browser"]  == "Chrome":
+        if context.settings["browser"] == "Chrome":
             chrome_options = ChromeOptions()
             context.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),
                                               options=chrome_options)
-        elif context.settings["browser"]  == "Firefox":
+        elif context.settings["browser"] == "Firefox":
             firefox_options = FirefoxOptions()
             context.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()),
                                                options=firefox_options)
