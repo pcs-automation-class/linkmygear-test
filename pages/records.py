@@ -43,3 +43,16 @@ class RecordsPage(BasePage):
 
     def verify_page(self):
         super().verify_page(self.header)
+
+    def filter_by_device(self, device_name: str):
+        filter_element = self.locate_element(self.filter_device)
+        filter_element.click()
+        device_option = (By.XPATH, f"//li[contains(text(), '{device_name}')]")
+        self.locate_element(device_option).click()
+
+    def filter_by_date(self, start_date: str, end_date: str):
+        self.locate_element(self.filter_date).send_keys(start_date)
+        self.locate_element(self.filter_date).send_keys(end_date)
+
+    def click_details(self):
+        self.locate_element(self.details_button).click()
