@@ -22,3 +22,4 @@ class BasePage:
 
     def open_page_devices(self):
         self.locate_element(self.page_devices).click()
+
