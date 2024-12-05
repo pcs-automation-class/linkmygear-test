@@ -1,5 +1,5 @@
 # Created by Anna at 12/1/24
-Feature: Update Devices
+Feature: Update Devices Names
 
   Scenario: Update Device Name
     Given user Open "dev" environment
