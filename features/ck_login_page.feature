@@ -1,6 +1,5 @@
 # Created by catalinak at 12/4/24
 Feature: Login Page Tests
-  # Examples of login page tests for correct and incorrect credentials
 
   Background:
     Given Open "dev" environment

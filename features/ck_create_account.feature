@@ -1,6 +1,5 @@
 # Created by catalinak at 12/4/24
 Feature: Create Account
-  # Tests for the create account page functionality
 
   Background:
     Given Open "dev" environment

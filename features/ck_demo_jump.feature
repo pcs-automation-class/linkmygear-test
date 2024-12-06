@@ -1,6 +1,5 @@
 # Created by catalinak at 12/4/24
 Feature: Generate Demo Jump
-  # Tests to validate the "Generate Demo Jump" functionality
 
   Background:
     Given Open "dev" environment
