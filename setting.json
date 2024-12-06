@@ -15,8 +15,18 @@
   },
   "Project_settings": {
     "browser": "Chrome",
-    "maximize_window": "True",
-    "width": 430,
-    "height": 932
+    "maximize_window": false,
+    "screens": {
+      "iPhone 14 Pro Max": {
+        "screen_width": 430,
+        "screen_height": 932,
+        "portrait": true
+      },
+      "Samsung Galaxy S20 Ultra": {
+        "screen_width": 412,
+        "screen_height": 915,
+        "portrait": false
+      }
+    }
   }
 }

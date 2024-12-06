@@ -7,8 +7,8 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 import json
 # from pages.login import LoginPage
-from pages.devices import DevicesPage
-from pages.records import RecordsPage
+# from pages.devices import DevicesPage
+# from pages.records import RecordsPage
 
 
 def before_all(context):
@@ -31,55 +31,24 @@ def before_scenario(context, scenario):
         else:
             assert False, "Unknown browser!"
 
-        # TODO add in settings maximize_window or not
-        # if maximize_window == True
-        context.driver.maximize_window()
+        if context.settings["maximize_window"]:  # Same as context.settings["maximize_window"] is True
+            context.driver.maximize_window()
+        else:
+            if context.settings["screens"]["iPhone 14 Pro Max"]["portrait"]:
+                screen_width = context.settings["screens"]["iPhone 14 Pro Max"]["screen_width"]
+                screen_height = context.settings["screens"]["iPhone 14 Pro Max"]["screen_height"]
+            else:
+                screen_height = context.settings["screens"]["iPhone 14 Pro Max"]["screen_width"]
+                screen_width = context.settings["screens"]["iPhone 14 Pro Max"]["screen_height"]
 
+            context.driver.set_window_size(screen_width, screen_height)
+
+        print()
         # context.login_page = LoginPage(context.driver)
-        context.devices = DevicesPage()
-        context.records = RecordsPage()
+        # context.devices = DevicesPage()
+        # context.records = RecordsPage()
 
 
 def after_scenario(context, scenario):
     if "EMULATE" not in scenario.name:
         context.driver.quit()
-
-#
-# press button run
-#
-# def before_all
-#
-# def before_feature
-#
-# def before_scenario
-#
-#     run scenario
-#
-# def before_step
-#
-#     run step Given Login in "dev" env as "user"
-#
-# def after_step
-#
-# def before_steps
-#
-#     run Given Open url "dev" env
-#
-# def after_steps
-#
-# def before_steps
-#
-#     run Then Fillout "Good user" credentials
-#
-# def after_steps
-#
-# def before_step
-#     run Then Click "login" button
-#
-# def after_steps
-#
-# def after_scenario
-#
-# def after_feature
-#
-# def after_all

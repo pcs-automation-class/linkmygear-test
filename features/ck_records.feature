@@ -15,4 +15,3 @@ Feature: Records Page Automation
     Then User performs grouping successfully
     When User clicks "Log out"
     Then User is logged out successfully
-

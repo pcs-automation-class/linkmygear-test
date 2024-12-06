@@ -2,7 +2,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.expected_conditions import element_to_be_selected
 from selenium.webdriver.support.wait import WebDriverWait
-from base import BasePage
+# from base import BasePage
+from pages.base import BasePage
 
 
 class DevicesPage(BasePage):
