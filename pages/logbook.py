@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.expected_conditions import element_to_be_selected
-from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support.expected_conditions import element_to_be_selected
+# from selenium.webdriver.support import expected_conditions as EC
 from base import BasePage
 
 
@@ -27,10 +27,8 @@ class LogBookPage(BasePage):
         self.question = (By.XPATH, "//h3[contains(text(),'May be you want to sign your jump?')]")
         self.sign_jump_button = (By.XPATH, "//button[contains(text(),'Sign jump')]")
 
-
     def verify_logbook_page(self):
         self.locate_element(self.page_logbook).click()
 
     def open_logbook_page(self):
         self.locate_element(self.page_logbook).click()
-
