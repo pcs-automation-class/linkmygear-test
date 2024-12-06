@@ -22,12 +22,3 @@ class BasePage:
 
     def open_page_devices(self):
         self.locate_element(self.page_devices).click()
-
-    def open_page_records(self):
-        self.locate_element(self.page_records).click()
-
-    def open_page_logbook(self):
-        self.locate_element(self.page_logbook).click()
-
-    def logout(self):
-        self.locate_element(self.button_logout).click()
