@@ -22,24 +22,3 @@ Feature: Test API
       | battery   | 80              |
 #      states: idle, on, off
       | state     | idle            |
-
-
-    Scenario: EMULATE Device heartbeat message
-    Given Create new heartbeat message for device with following data
-      | key       | value           |
-      | imei      | 333333333333352 |
-      | date      | 20241116        |
-      | latitude  | 37.770198       |
-      | longitude | -121.641856     |
-      | battery   | 50              |
-      | state     | on              |
-
-    Scenario: EMULATE Device heartbeat message
-    Given Create new heartbeat message for device with following data
-      | key       | value           |
-      | imei      | 333333333333354 |
-      | date      | 20241116        |
-      | latitude  | 37.3387         |
-      | longitude | -121.8853       |
-      | battery   | 0               |
-      | state     | off             |
