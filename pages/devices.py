@@ -19,7 +19,7 @@ class DevicesPage(BasePage):
         self.read_more = (By.XPATH, "//div[@class='lmg-news']//button[text()='Read more']")
         self.image = (By.XPATH, "")
         self.read_less = (By.XPATH, "")
-        self.your_device_label = (By.XPATH, "//h3[@class='section-title']")
+        self.page_header = (By.XPATH, "//h3[@class='section-title']")
         self.news_label = (By.XPATH, "")
         self.charge_icon = (By.XPATH, "")
         self.device_state_icon = (By.XPATH, "")
@@ -30,5 +30,5 @@ class DevicesPage(BasePage):
         self.locate_element(self.device_settings).click()
 
     def verify_page(self):
-        super().verify_page(self.your_device_label)
+        super().verify_page(self.page_header)
 

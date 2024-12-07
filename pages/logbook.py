@@ -32,3 +32,6 @@ class LogBookPage(BasePage):
 
     def open_logbook_page(self):
         self.locate_element(self.page_logbook).click()
+
+    def verify_page(self):
+        super().verify_page(self.page_header)
