@@ -1,3 +1,5 @@
+from selenium.webdriver.common.by import By
+
 from pages.base import BasePage
 
 
@@ -39,10 +41,10 @@ class RecordsPage(BasePage):
         self.logout_button = (
             "//a[contains(@class, 'hidden-on-tablet') and contains(@class, 'lmg-btn')]"
         )
-        self.page_header = "//div[@class='lmg-header__box']"
+        self.page_header = (By.XPATH, "//div[@class='lmg-header__box']")
 
     def verify_page(self):
-        super().verify_page(self.header)
+        super().verify_page(self.page_header)
 
     def filter_by_device(self, device_name: str):
         filter_element = self.locate_element(self.filter_device)

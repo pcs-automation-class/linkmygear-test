@@ -29,7 +29,7 @@ class ProfilePage(BasePage):
         self.change_password_button = (By.XPATH, "//button[contains(text(), 'Change password')]")
 
     def verify_page(self):
-        super().verify_page(self.profile_header)
+        super().verify_page(self.page_my_profile)
 
     def open_page_my_profile(self):
         self.locate_element(self.page_my_profile).click()

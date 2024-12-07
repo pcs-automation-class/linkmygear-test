@@ -3,7 +3,7 @@ Feature: Login Page Tests
 
   Background:
     Given Open "dev" environment
-    Then Verify the Login page is displayed
+    Then Verify the "Login" page is displayed
 
   Scenario Outline: Login with correct credentials
     Then Enter email "valid_user_email" into the email field

@@ -6,9 +6,10 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 import json
-# from pages.login import LoginPage
-# from pages.devices import DevicesPage
-# from pages.records import RecordsPage
+from pages.login import LoginPage
+from pages.devices import DevicesPage
+from pages.records import RecordsPage
+from pages.logbook import LogBookPage
 
 
 def before_all(context):
@@ -43,10 +44,10 @@ def before_scenario(context, scenario):
 
             context.driver.set_window_size(screen_width, screen_height)
 
-        print()
-        # context.login_page = LoginPage(context.driver)
-        # context.devices = DevicesPage()
-        # context.records = RecordsPage()
+        context.login_page = LoginPage()
+        context.devices = DevicesPage()
+        context.records = RecordsPage()
+        context.logbook = LogBookPage()
 
 
 def after_scenario(context, scenario):
