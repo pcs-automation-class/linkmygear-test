@@ -23,13 +23,16 @@ class ProfilePage(BasePage):
         self.delete_phone = (By.XPATH, "//div[@class='repeater-input']//button[@type='button']")
         self.sms_checkbox = (By.XPATH, "//span[@class='el-checkbox__inner']")
         self.save_button = (By.XPATH, "//button[contains(text(), 'Save')]")
-        self.current_password_field = (By.XPATH, "")
-        self.new_password_field = (By.XPATH, "")
-        self.confirm_password_field = (By.XPATH, "")
+        self.current_password_field = (By.XPATH, "//div[contains(@class, 'el-form-item') and .//div[text()="
+                                                 "'Please input your old password']]//input[@type='password']")
+        self.new_password_field = (By.XPATH, "(//div[contains(@class, 'el-form-item') and contains(@class, 'is-required"
+                                             "') and contains(@class, 'asterisk-left')]//div[contains(@class, 'el-input"
+                                             "') and contains(@class, 'is-disabled')])[1]//input[@type='password']")
+        self.confirm_password_field = (By.XPATH, "//div[contains(@class, 'el-form-item')][3]//input[@type='password']")
         self.change_password_button = (By.XPATH, "//button[contains(text(), 'Change password')]")
 
-    def verify_page(self):
-        super().verify_page(self.page_my_profile)
+    def ok_verify_page(self):
+         super().verify_page(self.page_my_profile)
 
     def open_page_my_profile(self):
         self.locate_element(self.page_my_profile).click()
