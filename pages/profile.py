@@ -23,6 +23,7 @@ class ProfilePage(BasePage):
         self.delete_phone = (By.XPATH, "//div[@class='repeater-input']//button[@type='button']")
         self.sms_checkbox = (By.XPATH, "//span[@class='el-checkbox__inner']")
         self.save_button = (By.XPATH, "//button[contains(text(), 'Save')]")
+        self.change_password_h5 = (By.XPATH, "//h5[text() = 'Change password'")
         self.current_password_field = (By.XPATH, "//div[contains(@class, 'el-form-item') and .//div[text()="
                                                  "'Please input your old password']]//input[@type='password']")
         self.new_password_field = (By.XPATH, "(//div[contains(@class, 'el-form-item') and contains(@class, 'is-required"
