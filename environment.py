@@ -10,6 +10,7 @@ from pages.login import LoginPage
 from pages.devices import DevicesPage
 from pages.records import RecordsPage
 from pages.logbook import LogBookPage
+from pages.profile import ProfilePage
 
 
 def before_all(context):
@@ -48,6 +49,7 @@ def before_scenario(context, scenario):
         context.devices = DevicesPage()
         context.records = RecordsPage()
         context.logbook = LogBookPage()
+        context.profile = ProfilePage()
 
 
 def after_scenario(context, scenario):
