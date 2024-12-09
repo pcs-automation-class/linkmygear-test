@@ -7,13 +7,17 @@ from pages.base import BasePage
 
 
 class LoginPage(BasePage):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,driver):
+        super().__init__(driver)
         self.page_header = (By.XPATH, "//h5[text()='Login to Your Account']")
-        self.email = (By.XPATH, "")
+        self.email = (By.XPATH, "//input[@name='username']")
+        self.password = (By.XPATH, "//input[@name='password']")
+        self.login_button = (By.XPATH, "//button[contains(text(), 'Login')]")
+        self.forgot_password_link = (By.XPATH, "//a[text()='Forgot password?']")
+        self.click_create_account = (By.XPATH, "//a[text()='Create an account']")
 
     def verify_page(self):
-        super().verify_page(self.page_header)
+        self.locate_element(self.page_header)
 
     def type_email(self, email: str):
         # element = self.locate_element(self.email)
@@ -30,7 +34,11 @@ class LoginPage(BasePage):
         pass
 
     def click_forgot_password(self):
-        pass
+        self.click_element(self.forgot_password_link)
 
     def click_create_account(self):
         pass
+
+
+def login():
+    return None
