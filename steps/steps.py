@@ -61,3 +61,31 @@ def click_element_by_name(context, element_name):
     else:
         assert False, f"Unknown element: {element_name}"
 
+
+@step('Verify the "{page_name}" page is displayed')
+def verify_page_is_displayed(context, page_name):
+    if page_name.lower() in ["login", "log in"]: #handles variations
+        context.login_page.verify_page()
+    elif page_name.lower() == "forgot password":
+        context.forgot_password_page.verify_page()
+    elif page_name.lower() == "devices":
+        context.devices_page.verify_page()
+    elif page_name.lower() == "records":
+        context.records_page.verify_page()
+    elif page_name.lower() == "logbook":
+        context.logbook_page.verify_page()
+    else:
+        assert False, f"Unknown page: {page_name}"
+
+@step('The user enters a valid "{email}" into the "{field_name}" field')
+def enter_valid_email(context, email, field_name):
+    if field_name.lower() == "your email":
+        context.current_page.enter_email(email)
+    else:
+        assert False, f"Unknown field: {field_name}"
+
+@step('A confirmation message appears')
+def verify_confirmation_message(context):
+    assert context.current_page.is_confirmation_message_displayed(), "Confirmation message did not appear"
+
+
