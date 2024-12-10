@@ -11,6 +11,7 @@ from pages.devices import DevicesPage
 from pages.records import RecordsPage
 from pages.logbook import LogBookPage
 from pages.profile import ProfilePage
+from pages.forgot_password import ForgotPasswordPage
 
 
 def before_all(context):
@@ -45,11 +46,14 @@ def before_scenario(context, scenario):
 
             context.driver.set_window_size(screen_width, screen_height)
 
-        context.login_page = LoginPage()
-        context.devices = DevicesPage()
-        context.records = RecordsPage()
-        context.logbook = LogBookPage()
-        context.profile = ProfilePage()
+        context.login_page = LoginPage(context.driver)
+        context.devices = DevicesPage(context.driver)
+        context.records = RecordsPage(context.driver)
+        context.logbook = LogBookPage(context.driver)
+        context.forgot_password = ForgotPasswordPage(context.driver)
+        context.profile = ProfilePage(context.driver)
+
+        context.current_page = context.login_page
 
 
 def after_scenario(context, scenario):
