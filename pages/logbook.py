@@ -2,12 +2,12 @@ from selenium.webdriver.common.by import By
 # from selenium.webdriver.support.ui import WebDriverWait
 # from selenium.webdriver.support.expected_conditions import element_to_be_selected
 # from selenium.webdriver.support import expected_conditions as EC
-from base import BasePage
+from pages.base import BasePage
 
 
 class LogBookPage(BasePage):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, driver):
+        super().__init__(driver)
         self.page_logbook = (By.XPATH, "//a[contains(text(), 'LogBook')]")
         self.page_header = (By.XPATH, "//h1[@class='section-left-tite']")
         self.log_clear_icon = (By.XPATH, "//button[@class='logb-filters__clear']")
@@ -35,3 +35,4 @@ class LogBookPage(BasePage):
 
     def verify_page(self):
         super().verify_page(self.page_header)
+

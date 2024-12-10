@@ -12,7 +12,7 @@ Feature: Profile Page Testing
     Then Type "550-55-50" into "enter_phone"
     Then Toggle SMS acceptance to True
     Then Click element "save_button"
-    Then Verify presence of "change_password_button"
+    Then Verify the "change_password_h5" page is displayed
     Then Type "mCtwAtjpizSTWEz7" into "current_password_field"
     Then Type "7563259BuyaCat" into "new_password_field"
     Then Type "7563259BuyaCat" into "confirm_password_field"

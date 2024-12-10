@@ -7,9 +7,9 @@ from pages.base import BasePage
 
 
 class DevicesPage(BasePage):
-    def __init__(self):
-        super().__init__()
-        self.device_settings = (By.XPATH, "//a[contains(@href, 'device-DeviceSettings')]")
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.device_settings = (By.XPATH, "//a[contains(@href, 'device-settings')]")
         self.device_name = (By.XPATH, "//div[@class='lmg-device__info']/h4")
         self.charge = (By.XPATH, "//span[@class='indicator']")
         self.device_state = (By.XPATH, "//span[@class='power']")
