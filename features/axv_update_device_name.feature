@@ -2,14 +2,15 @@
 Feature: Update Devices Names
 
   Scenario: Update Device Name
-    Given user Open "dev" environment
-    Then user Fill out "user_x" credentials
-    Then user Click "Login" button
-    Then user Click "device_gear" button
-    Then user Verify presence of Element "Device Settings"
-    Then user select device to be edited
-    Then user Click "Edit" button
-    Then user Verify presence of element "Edit_Device"
-    Then user Update Name
-    Then user Click "Update" button
+    Given Open "dev" environment
+    Then Fill out "user" credentials
+    Then Click "Login" button
+    Then Click "device_gear" button
+    Then Verify presence of Element "Device Settings"
+    Then Select device to be edited
+    Then Click "Edit" button
+    Then Verify presence of element "Edit_Device"
+    Then Update Name
+    Then Click "Update" button
+    And Verify Device name is updated
     # Enter steps here
