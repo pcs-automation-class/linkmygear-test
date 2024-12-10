@@ -8,7 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.forgot_password import ForgotPasswordPage
 from pages.login import LoginPage, login
-from profile import ProfilePage
+from pages.profile import ProfilePage
 
 
 @step('Open "{env}" environment')

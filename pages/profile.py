@@ -3,12 +3,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-from base import BasePage
+from pages.base import BasePage
 
 
 class ProfilePage(BasePage):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,driver):
+        super().__init__(driver)
         self.page_my_profile = (By.XPATH, "//button[contains(text(), 'My Profile')]")
         self.first_name_field = (By.XPATH, "//div[text()='Please input first name']/preceding-sibling::div/"
                                            "/input[@class='el-input__inner']")
