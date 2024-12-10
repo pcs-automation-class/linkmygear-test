@@ -14,7 +14,6 @@ from pages.profile import ProfilePage
 from pages.forgot_password import ForgotPasswordPage
 
 
-
 def before_all(context):
     with open("setting.json", "r") as file:
         file_data = json.load(file)
