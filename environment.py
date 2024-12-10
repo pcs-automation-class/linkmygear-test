@@ -34,7 +34,7 @@ def before_scenario(context, scenario):
         else:
             assert False, "Unknown browser!"
 
-        if context.settings["maximize_window"]:  # Same as context.DeviceSettings["maximize_window"] is True
+        if context.settings["maximize_window"]:  # Same as context.settings["maximize_window"] is True
             context.driver.maximize_window()
         else:
             if context.settings["screens"]["iPhone 14 Pro Max"]["portrait"]:
