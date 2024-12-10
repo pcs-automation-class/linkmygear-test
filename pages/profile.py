@@ -7,7 +7,7 @@ from pages.base import BasePage
 
 
 class ProfilePage(BasePage):
-    def __init__(self,driver):
+    def __init__(self, driver):
         super().__init__(driver)
         self.page_my_profile = (By.XPATH, "//button[contains(text(), 'My Profile')]")
         self.first_name_field = (By.XPATH, "//div[text()='Please input first name']/preceding-sibling::div/"
