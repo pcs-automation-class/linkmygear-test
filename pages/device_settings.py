@@ -12,3 +12,4 @@ class DeviceSettings(BasePage):
 
     def verify_page(self):
         super().verify_page(self.page_header)
+        
