@@ -2,10 +2,10 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
+# from selenium.webdriver.common.action_chains import ActionChains
 
 from pages.base import BasePage
-from pages.login import LoginPage
+# from pages.login import LoginPage
 
 
 class ProfilePage(BasePage):
@@ -59,4 +59,3 @@ class ProfilePage(BasePage):
         self.driver.execute_script("arguments[0].scrollIntoView();", checkbox)
         if checkbox.is_selected() != accept:
             checkbox.click()
-
