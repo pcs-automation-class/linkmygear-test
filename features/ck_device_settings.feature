@@ -6,8 +6,9 @@ Feature: Device Settings Automation
     And Navigate to "Device Settings" page
 
   Scenario Outline: Rename Device
-    When Click button "Edit" for the device "<current_name>"
-    And Rename the device to "<new_name>"
+#    When Click button "Edit" for the device "<current_name>"
+    And Rename the device with name "<current_name>" to "<new_name>"
+#    And Rename the device with imei "<imei>" to "<new_name>"
     And Click button "Update"
     Then Verify success pop-up message contains "<new_name>"
     And Verify the updated device name "<new_name>" is displayed in the list
