@@ -2,23 +2,30 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+# from selenium.webdriver.common.action_chains import ActionChains
 
 from pages.base import BasePage
+# from pages.login import LoginPage
 
 
 class ProfilePage(BasePage):
     def __init__(self,driver):
         super().__init__(driver)
         self.page_my_profile = (By.XPATH, "//button[contains(text(), 'My Profile')]")
-        self.first_name_field = (By.XPATH, "//div[text()='Please input first name']/preceding-sibling::div/"
-                                           "/input[@class='el-input__inner']")
-        self.last_name_field = (By.XPATH, "//div[text()='Please select last name']/preceding-sibling::div/"
-                                          "/input[@class='el-input__inner']")
+        self.my_email = (By.XPATH, "//input[@name='username']")  # how to refer login.py?
+        self.my_password = (By.XPATH, "//input[@name='password']")  # how to refer login.py?
+        self.my_login_button = (By.XPATH, "//button[contains(text(), 'Login')]")  # how to refer login.py?
+        self.my_profile_icon = (By.XPATH, "//a[@href='#/profile']")
+        self.first_name_field = (By.XPATH, "(//input[@type='text' and contains(@class, 'el-input__inner') and "
+                                           "@autocomplete='off'])[1]")
+        self.last_name_field = (By.XPATH, "(//input[@type='text' and contains(@class, 'el-input__inner') and "
+                                          "@autocomplete='off'])[2]")
         self.email_field = (By.XPATH, "//div[@class='el-input__wrapper']//input[@class='el-input__inner' and "
                                       "@type='text' and @disabled]")
         self.add_phone_button = (By.XPATH, "//button[contains(text(), 'Add Phone')]")
         self.select_prefix = (By.XPATH, "//div[@class='el-select']/div[@class='el-select__wrapper is-filterable "
                                         "el-tooltip__trigger el-tooltip__trigger']")
+        self.prefix_us = (By.XPATH, "//span[contains(text(),'+1684')]")
         self.enter_phone = (By.XPATH, "//input[@type='text' and @placeholder='Enter Phone']")
         self.delete_phone = (By.XPATH, "//div[@class='repeater-input']//button[@type='button']")
         self.sms_checkbox = (By.XPATH, "//span[@class='el-checkbox__inner']")
@@ -49,5 +56,6 @@ class ProfilePage(BasePage):
 
     def toggle_sms_acceptance(self, accept: bool):
         checkbox = self.locate_element(self.sms_checkbox)
+        self.driver.execute_script("arguments[0].scrollIntoView();", checkbox)
         if checkbox.is_selected() != accept:
             checkbox.click()

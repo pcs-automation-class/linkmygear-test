@@ -15,7 +15,7 @@
   },
   "Project_settings": {
     "browser": "Chrome",
-    "maximize_window": false,
+    "maximize_window": true,
     "screens": {
       "iPhone 14 Pro Max": {
         "screen_width": 430,
