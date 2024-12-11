@@ -12,6 +12,7 @@ from pages.records import RecordsPage
 from pages.logbook import LogBookPage
 from pages.profile import ProfilePage
 from pages.forgot_password import ForgotPasswordPage
+from pages.device_settings import DeviceSettings
 
 
 def before_all(context):
@@ -52,6 +53,7 @@ def before_scenario(context, scenario):
         context.logbook = LogBookPage(context.driver)
         context.forgot_password = ForgotPasswordPage(context.driver)
         context.profile = ProfilePage(context.driver)
+        context.device_settings = DeviceSettings(context.driver)
 
         context.current_page = context.login_page
 
