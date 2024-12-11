@@ -25,10 +25,35 @@ class DevicesPage(BasePage):
         self.device_state_icon = (By.XPATH, "")
         self.news_title = (By.XPATH, "")
         self.news_body = (By.XPATH, "")
+        self.edit_button = (By.XPATH, "")
+        self.edit_page_device_name = (By.XPATH, "")
+        self.edit_page_update_button = (By.XPATH, "")
 
     def open_device_settings(self):
         self.locate_element(self.device_settings).click()
 
+    def click_edit_button_by_name(self, name: str):
+        pass
+
+    def click_edit_button_by_imei(self, imei: str):
+        pass
+
     def verify_page(self):
         super().verify_page(self.page_header)
 
+    def rename_device_by_imei(self, imei: str, new_name: str):
+        self.rename_device("imei", imei, new_name)
+
+    def rename_device_by_name(self, old_name: str, new_name: str):
+        self.rename_device("name", old_name, new_name)
+
+    def rename_device(self, by: str, identifier: str, new_name):
+        if by == "imei":
+            self.click_edit_button_by_imei(identifier)
+        elif by == "name":
+            self.click_edit_button_by_name(identifier)
+        else:
+            raise
+
+        self.enter_text(self.edit_page_device_name, new_name)
+        self.click_element(self.edit_page_update_button)

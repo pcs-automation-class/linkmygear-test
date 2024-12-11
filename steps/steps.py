@@ -94,11 +94,16 @@ def verify_confirmation_message(context):
 
 
 
-@step('Click element "{locator_name}"')
-def step_impl(context, locator_name):
-    profile_page = ProfilePage(context.driver)
-    locator = getattr(profile_page, locator_name)
-    profile_page.click_element(locator)
+@step('Click element "{element_name}"')
+def click_element_by_name(context, element_name):
+    context.profile.click_element_by_name(element_name)
+
+# @step('Click save button')
+# def click_save_button(context):
+#     page = context.current_page()
+#     if page == "profile":
+#         context.profile.click_element_by_name("Save")
+
 
 
 @step('Type "{text}" into "{field_name}"')
@@ -120,3 +125,12 @@ def step_impl(context, expected_text, field_name):
 def step_impl(context, state):
     profile_page = ProfilePage(context.driver)
     profile_page.toggle_sms_acceptance(state.lower() == "true")
+
+
+@step('Rename the device with name "{current_name}" to "{new_name}"')
+def rename_device(context, current_name, new_name):
+    context.devices.rename_device_by_name(current_name, new_name)
+
+@step('Rename the device with imei "{imei}" to "{new_name}"')
+def rename_device(context, imei, new_name):
+    context.devices.rename_device_by_imei(imei, new_name)
