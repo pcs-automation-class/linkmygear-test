@@ -28,7 +28,7 @@ def verify_element_presence(context, element_name):
 
     if element_name.lower() == "forgot password link":
         element = context.current_page.forgot_password_link
-    elif element_name.lower() == "your email field":
+    elif element_name.lower() == "your email":
         element = context.current_page.your_email
     elif element_name.lower() == "send button":
         element = context.current_page.send
@@ -91,14 +91,27 @@ def enter_valid_email(context, email, field_name):
 def verify_confirmation_message(context):
     assert context.current_page.is_confirmation_message_displayed(), "Confirmation message did not appear"
 
+@step('The user leaves the "{field}" field empty')
+def leave_email_field_empty(context, field):
+    email_field = context.driver.find_element(By.XPATH, "//input[@type='text']")
+    email_field.clear()
 
+@step('An error message for empty email field appears')
+def verify_empty_email_error_message(context):
+    error_message = context.driver.find_element(By.XPATH, "//div[@class='el-form-item__error']")
+    assert error_message.text == "This field is required"
+#Profile steps
 
+@step('Click element "{element_name}"')
+def click_element_by_name(context, element_name):
+    context.profile.click_element_by_name(element_name)
 
-@step('Click element "{locator_name}"')
-def step_impl(context, locator_name):
-    profile_page = ProfilePage(context.driver)
-    locator = getattr(profile_page, locator_name)
-    profile_page.click_element(locator)
+# @step('Click save button')
+# def click_save_button(context):
+#     page = context.current_page()
+#     if page == "profile":
+#         context.profile.click_element_by_name("Save")
+
 
 
 @step('Type "{text}" into "{field_name}"')
@@ -120,3 +133,13 @@ def step_impl(context, expected_text, field_name):
 def step_impl(context, state):
     profile_page = ProfilePage(context.driver)
     profile_page.toggle_sms_acceptance(state.lower() == "true")
+
+
+
+@step('Rename the device with name "{current_name}" to "{new_name}"')
+def rename_device(context, current_name, new_name):
+    context.devices.rename_device_by_name(current_name, new_name)
+
+@step('Rename the device with imei "{imei}" to "{new_name}"')
+def rename_device(context, imei, new_name):
+    context.devices.rename_device_by_imei(imei, new_name)

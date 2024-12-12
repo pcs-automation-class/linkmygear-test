@@ -8,7 +8,7 @@ Feature: Forgot Password Automation
   Scenario Outline: Successfully restoring a password
     Then Verify presence of element "forgot password link"
     Then Click "forgot password" element
-    Then Verify presence of element "your email field"
+    Then Verify presence of element "your email"
     When The user enters a valid "catk.test@gmail.com" into the "Your Email" field
     And Click button "Send"
     Then A confirmation message appears
@@ -17,3 +17,19 @@ Feature: Forgot Password Automation
   Examples:
     | email                  |
     | catk.test@gmail.com    |
+
+  Scenario Outline: Attempting to restore a password with an empty email field
+    Then Verify presence of element "forgot password link"
+    Then Click "forgot password" element
+    Then Verify presence of element "your email"
+    When The user leaves the "your email" field empty
+    And Click button "Send"
+    Then An error message for empty email field appears
+
+  Examples:
+    | email                  |
+    | none                   |
+
+  Scenario Outline: Change Device Name
+    Then Open Device Settings
+    Then Change Device Name
