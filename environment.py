@@ -14,12 +14,29 @@ from pages.profile import ProfilePage
 from pages.forgot_password import ForgotPasswordPage
 from pages.device_settings import DeviceSettings
 
+import logging
+import os
+
 
 def before_all(context):
     with open("setting.json", "r") as file:
         file_data = json.load(file)
         context.credentials = file_data["Users"]
         context.settings = file_data["Project_settings"]
+
+    log_file = "my_log.log"
+
+    if os.path.exists(log_file):
+        os.remove(log_file)
+
+    logging.basicConfig(
+        filename=log_file,
+        level=logging.INFO,
+        format='%(asctime)s- %(levelname)s - %(message)s',
+        filemode='w'
+    )
+
+    context.logger = logging.getLogger(__name__)
 
 
 def before_scenario(context, scenario):
