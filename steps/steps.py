@@ -13,14 +13,18 @@ from pages.profile import ProfilePage
 
 @step('Open "{env}" environment')
 def open_url(context, env):
+
     environments = {
         "dev": "https://test:FjeKB9ySMzwvDUs2XACpfu@dev.linkmygear.com",
         "prod": "https://app.linkmygear.com",
     }
-
+    context.logger.info(f"Open environment '{env}' form {environments}")
     context.driver.get(environments[env])
+    context.logger.warning("Create LoginPage object")
     context.login_page = LoginPage(context.driver)
+    context.logger.error("LoginPage object created")
     context.current_page = context.login_page
+
 
 @step('Verify presence of element "{element_name}"')
 def verify_element_presence(context, element_name):
