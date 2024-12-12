@@ -20,7 +20,7 @@
       "iPhone 14 Pro Max": {
         "screen_width": 430,
         "screen_height": 932,
-        "portrait": true
+        "portrait": false
       },
       "Samsung Galaxy S20 Ultra": {
         "screen_width": 412,

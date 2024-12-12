@@ -9,7 +9,7 @@ from pages.base import BasePage
 
 
 class ProfilePage(BasePage):
-    def __init__(self, driver):
+    def __init__(self,driver):
         super().__init__(driver)
         self.page_my_profile = (By.XPATH, "//button[contains(text(), 'My Profile')]")
         self.my_email = (By.XPATH, "//input[@name='username']")  # how to refer login.py?
@@ -40,19 +40,33 @@ class ProfilePage(BasePage):
         self.change_password_button = (By.XPATH, "//button[contains(text(), 'Change password')]")
 
     def ok_verify_page(self):
-        super().ok_verify_page(self.page_my_profile)
+        super().verify_page(self.page_my_profile)
 
     def open_page_my_profile(self):
         self.locate_element(self.page_my_profile).click()
 
-    def type_text(self, field_locator: tuple, text: str):
-        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(field_locator))
-        element.clear()
-        element.send_keys(text)
+    # def type_text(self, field_locator: tuple, text: str):
+    #     element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(field_locator))
+    #     element.clear()
+    #     element.send_keys(text)
 
-    def click_element(self, element_locator: tuple):
-        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(element_locator))
-        element.click()
+    # def click_element(self, element_locator: tuple):
+    #     element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(element_locator))
+    #     element.click()
+
+    def click_element_by_name(self, element_name: str):
+        element = None
+        if element_name.lower() == "first name":
+            element = self.first_name_field
+        elif element_name.lower() == "last name":
+            element = self.last_name_field
+        elif element_name.lower() == "select_prefix":
+            element = self.select_prefix
+        elif element_name.lower() == "prefix_us":
+            element = self.prefix_us
+
+        self.click_element(element)
+
 
     def toggle_sms_acceptance(self, accept: bool):
         checkbox = self.locate_element(self.sms_checkbox)
