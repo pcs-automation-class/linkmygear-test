@@ -24,7 +24,7 @@ def before_all(context):
         context.credentials = file_data["Users"]
         context.settings = file_data["Project_settings"]
 
-    log_file = "my_log.log"
+    log_file = "logs/my_log.log"
 
     if os.path.exists(log_file):
         os.remove(log_file)
@@ -40,9 +40,13 @@ def before_all(context):
 
 
 def before_scenario(context, scenario):
+    context.logger.info(f"SCENARIO: {scenario.name} Run")
     if "EMULATE" not in scenario.name:
         if context.settings["browser"] == "Chrome":
             chrome_options = ChromeOptions()
+            chrome_options.add_argument("--headless")
+            chrome_options.add_argument("--no-sandbox")
+            chrome_options.add_argument("--disable-dev-shm-usage")
             context.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),
                                               options=chrome_options)
         elif context.settings["browser"] == "Firefox":
@@ -64,17 +68,34 @@ def before_scenario(context, scenario):
 
             context.driver.set_window_size(screen_width, screen_height)
 
-        context.login_page = LoginPage(context.driver)
-        context.devices = DevicesPage(context.driver)
-        context.records = RecordsPage(context.driver)
-        context.logbook = LogBookPage(context.driver)
-        context.forgot_password = ForgotPasswordPage(context.driver)
-        context.profile = ProfilePage(context.driver)
-        context.device_settings = DeviceSettings(context.driver)
+        context.login_page = LoginPage(context.driver, context.logger)
+        context.devices = DevicesPage(context.driver, context.logger)
+        context.records = RecordsPage(context.driver, context.logger)
+        context.logbook = LogBookPage(context.driver, context.logger)
+        context.forgot_password = ForgotPasswordPage(context.driver, context.logger)
+        context.profile = ProfilePage(context.driver, context.logger)
+        context.device_settings = DeviceSettings(context.driver, context.logger)
 
         context.current_page = context.login_page
 
 
+def before_step(context, step):
+    context.logger.info(f"STEP: {step.name} run")
+
+
+def after_step(context, step):
+    status = step.status.name
+    if status == 'passed':
+        context.logger.info(f"STEP: {step.name} is PASSED")
+    else:
+        context.logger.warning(f"STEP: {step.name} is FAILED")
+
+
 def after_scenario(context, scenario):
+    status = scenario.status.name
+    if status == 'passed':
+        context.logger.info(f"SCENARIO: {scenario.name} is PASSED")
+    else:
+        context.logger.warning(f"SCENARIO: {scenario.name} is FAILED")
     if "EMULATE" not in scenario.name:
         context.driver.quit()

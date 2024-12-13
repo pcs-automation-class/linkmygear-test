@@ -2,9 +2,12 @@
 Feature: # Enter feature name here
   # Enter feature description here
 
+  @example
   Scenario: Login with correct credentials
-    Given Open "dev" environment
-#    Given Login in "dev" env as "user"
-#    Given Open url "dev" env
-#    Then Fillout "Good user" credentials
-#    Then Click "login" button
+    Given Login as "test_1" in "dev" environment
+    Then Wait 1 seconds
+
+  @example2
+  Scenario: Test 2 correct credentials
+    Given Login as "test_2" in "dev" environment
+    Then Wait 1 seconds

@@ -1,6 +1,7 @@
 .idea
 .venv
 *.log
+*.output
 __pycache__
 *.pyc
 setup.json

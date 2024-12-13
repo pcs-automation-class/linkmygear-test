@@ -4,8 +4,9 @@ from pages.base import BasePage
 
 
 class RecordsPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, driver, logger):
+        super().__init__(driver,logger)
+        self.logger = logger
         self.driver = driver
         self.records_tab = "//a[contains(text(), 'Records')]"
         self.select_device = (

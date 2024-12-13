@@ -6,8 +6,9 @@ from pages.base import BasePage
 
 
 class LogBookPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, driver, logger):
+        super().__init__(driver, logger)
+        self.logger = logger
         self.page_logbook = (By.XPATH, "//a[contains(text(), 'LogBook')]")
         self.page_header = (By.XPATH, "//h1[@class='section-left-tite']")
         self.log_clear_icon = (By.XPATH, "//button[@class='logb-filters__clear']")
