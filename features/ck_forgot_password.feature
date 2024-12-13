@@ -5,6 +5,7 @@ Feature: Forgot Password Automation
     Given Open "dev" environment
     Then Verify the "login" page is displayed
 
+  @forgot_pwd
   Scenario Outline: Successfully restoring a password
     Then Verify presence of element "forgot password link"
     Then Click "forgot password" element
@@ -14,6 +15,6 @@ Feature: Forgot Password Automation
     Then A confirmation message appears
 #    And CK the user receives a password reset email
 
-  Examples:
-    | email                  |
-    | catk.test@gmail.com    |
+    Examples:
+      | email               |
+      | catk.test@gmail.com |
