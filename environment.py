@@ -74,7 +74,7 @@ def before_scenario(context, scenario):
         context.logbook = LogBookPage(context.driver, context.logger)
         context.forgot_password = ForgotPasswordPage(context.driver, context.logger)
         context.profile = ProfilePage(context.driver, context.logger)
-        context.device_settings =  (context.driver, context.logger)
+        context.device_settings = DeviceSettings(context.driver, context.logger)
 
         context.current_page = context.login_page
 
