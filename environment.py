@@ -1,4 +1,3 @@
-from behave.reporter.summary import status_order
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
@@ -79,6 +78,7 @@ def before_scenario(context, scenario):
 
         context.current_page = context.login_page
 
+
 def before_step(context, step):
     context.logger.info(f"STEP: {step.name} run")
 
@@ -89,6 +89,7 @@ def after_step(context, step):
         context.logger.info(f"STEP: {step.name} is PASSED")
     else:
         context.logger.warning(f"STEP: {step.name} is FAILED")
+
 
 def after_scenario(context, scenario):
     status = scenario.status.name
