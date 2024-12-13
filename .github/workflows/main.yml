@@ -38,24 +38,19 @@ jobs:
 
       - name: Run tests (scheduled)
         if: github.event_name == 'schedule'
-        run: behave -f plain -k --tags="@default"
+        run: behave -f plain -k --tags="@example"
 
-      - name: Verify log.txt exists
+      - name: Verify my_log.log exists
         run: |
-          if [ ! -f log.txt ]; then
-            echo "Error: log.txt not found!"
+          if [ ! -f logs/my_log.log ]; then
+            echo "Error: my_log.log not found!"
             exit 1
           else
-            echo "log.txt exists and will be uploaded."
+            echo "my_log.log exists and will be uploaded."
           fi
 
       - name: Upload log.txt as artifact
         uses: actions/upload-artifact@v3
         with:
           name: test-log
-          path: log.txt
-
-      - name: Print test result
-        run: |
-          echo "Test result:"
-          cat log.txt
+          path: logs/my_log.log
