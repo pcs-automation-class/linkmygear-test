@@ -10,7 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class BasePage:
-    def __init__(self, driver):
+    def __init__(self, driver, logger):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 15)
         self.driver = driver
@@ -20,12 +20,18 @@ class BasePage:
         self.page_logbook = ()
         self.settings = ()
         self.button_logout = ()
+        self.logger = logger
 
     def locate_element(self, element: tuple[str, str]):
-        elements = (WebDriverWait(self.driver, 15).
-                    until(EC.presence_of_all_elements_located(element)))
-        assert len(elements) == 1, f"Element {element[0]} in {elements} exists not once"
-        return elements[0]
+        try:
+            web_element = (WebDriverWait(self.driver, 15).
+                        until(EC.presence_of_element_located(element)))
+            self.logger.info(f"WebElement '{element}' was found")
+            return web_element
+        except Exception as e:
+            self.logger.error(f"Can't locate WebElement {element}")
+            raise e
+
 
     def verify_page(self, page_header: tuple[str, str]):
         self.locate_element(page_header)
@@ -37,17 +43,17 @@ class BasePage:
     def click_element(self, element: tuple[str, str]):
         elem = self.locate_element(element)
         elem.click()
-        logging.info(f"Clicked element: {element}")
+        self.logger.info(f"Clicked element: {element}")
 
     def enter_text(self, element: tuple[str, str], text: str):
         elem = self.locate_element(element)
         elem.clear()
         elem.send_keys(text)
-        logging.info(f"Entered text '{text}' into element: {element}")
+        self.logger.info(f"Entered text '{text}' into element: {element}")
 
     def close_browser(self):
         self.driver.quit()
-        logging.info("Browser closed")
+        self.logger.info("Browser closed")
 
 
 

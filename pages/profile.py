@@ -9,8 +9,9 @@ from pages.base import BasePage
 
 
 class ProfilePage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, driver, logger):
+        super().__init__(driver, logger)
+        self.logger = logger
         self.page_my_profile = (By.XPATH, "//button[contains(text(), 'My Profile')]")
         self.my_email = (By.XPATH, "//input[@name='username']")  # how to refer login.py?
         self.my_password = (By.XPATH, "//input[@name='password']")  # how to refer login.py?

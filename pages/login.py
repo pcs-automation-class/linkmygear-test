@@ -7,8 +7,9 @@ from pages.base import BasePage
 
 
 class LoginPage(BasePage):
-    def __init__(self,driver):
-        super().__init__(driver)
+    def __init__(self, driver, logger):
+        super().__init__(driver, logger)
+        self.logger = logger
         self.page_header = (By.XPATH, "//h5[text()='Login to Your Account']")
         self.email = (By.XPATH, "//input[@name='username']")
         self.password = (By.XPATH, "//input[@name='password']")
@@ -20,9 +21,10 @@ class LoginPage(BasePage):
         self.locate_element(self.page_header)
 
     def type_email(self, email: str):
-        # element = self.locate_element(self.email)
-        # element.send_keys(email)
         self.locate_element(self.email).send_keys(email)
+
+    def type_password(self, password: str):
+        self.locate_element(self.password).send_keys(password)
 
     def clean_email(self):
         element = self.locate_element(self.email)
@@ -31,7 +33,7 @@ class LoginPage(BasePage):
         element.send_keys(Keys.DELETE)
 
     def click_login(self):
-        pass
+        self.click_element(self.login_button)
 
     def click_forgot_password(self):
         self.click_element(self.forgot_password_link)

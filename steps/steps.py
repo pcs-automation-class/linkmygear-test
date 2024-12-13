@@ -1,10 +1,10 @@
 from time import sleep
 
 from behave import step
-from selenium.webdriver import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
+# from selenium.webdriver import Keys
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.forgot_password import ForgotPasswordPage
 from pages.login import LoginPage, login
@@ -20,11 +20,22 @@ def open_url(context, env):
     }
     context.logger.info(f"Open environment '{env}' form {environments}")
     context.driver.get(environments[env])
-    context.logger.warning("Create LoginPage object")
-    context.login_page = LoginPage(context.driver)
-    context.logger.error("LoginPage object created")
-    context.current_page = context.login_page
+    # context.logger.warning("Create LoginPage object")
+    # context.login_page = LoginPage(context.driver, context.logger)
+    # context.logger.error("LoginPage object created")
+    # context.current_page = context.login_page
 
+@step('Login as "{user}" in "{env}" environment')
+def login_in_env_with_user_credentials(context, user, env):
+    open_url(context, env)
+    context.login_page.type_email(context.credentials[user]['username'])
+    context.login_page.type_password(context.credentials[user]['password'])
+    context.login_page.click_login()
+    context.login_page.verify_page()
+
+@step('Wait {sec} seconds')
+def wait_sec(context, sec):
+    sleep(int(sec))
 
 @step('Verify presence of element "{element_name}"')
 def verify_element_presence(context, element_name):
@@ -138,3 +149,4 @@ def rename_device(context, current_name, new_name):
 @step('Rename the device with imei "{imei}" to "{new_name}"')
 def rename_device(context, imei, new_name):
     context.devices.rename_device_by_imei(imei, new_name)
+

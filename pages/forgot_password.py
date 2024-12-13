@@ -3,8 +3,9 @@ from pages.base import BasePage
 
 
 class ForgotPasswordPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, driver, logger):
+        super().__init__(driver, logger)
+        self.logger = logger
         self.link_my_gear_logo = (By.XPATH, "//a[@class='logo']")
         self.page_header = (By.XPATH, "//h5[text()='Restore Password']")
         self.enter_email_header = (By.XPATH, "//p[text()='Please enter your email']")
