@@ -115,7 +115,7 @@ def verify_confirmation_message(context):
 
 
 @step('Click element "{element_name}"')
-def click_element_by_name(context, element_name):
+def click_element_by_name_profile(context, element_name):
     context.profile.click_element_by_name(element_name)
 
 
@@ -127,14 +127,14 @@ def click_element_by_name(context, element_name):
 
 
 @step('Type "{text}" into "{field_name}"')
-def step_impl(context, text, field_name):
+def tepe_text_into_field(context, text, field_name):
     profile_page = ProfilePage(context.driver, context.logger)
     field_locator = getattr(profile_page, field_name)
     profile_page.type_text(field_locator, text)
 
 
 @step('Verify text "{expected_text}" is in "{field_name}"')
-def step_impl(context, expected_text, field_name):
+def verify_text_in_field(context, expected_text, field_name):
     profile_page = ProfilePage(context.driver, context.logger)
     field_locator = getattr(profile_page, field_name)
     element = profile_page.locate_element(field_locator)
@@ -143,16 +143,16 @@ def step_impl(context, expected_text, field_name):
 
 
 @step('Toggle SMS acceptance to {state}')
-def step_impl(context, state):
+def toggle_sms(context, state):
     profile_page = ProfilePage(context.driver, context.logger)
     profile_page.toggle_sms_acceptance(state.lower() == "true")
 
 
 @step('Rename the device with name "{current_name}" to "{new_name}"')
-def rename_device(context, current_name, new_name):
+def rename_device_name(context, current_name, new_name):
     context.devices.rename_device_by_name(current_name, new_name)
 
 
 @step('Rename the device with imei "{imei}" to "{new_name}"')
-def rename_device(context, imei, new_name):
+def rename_device_imei(context, imei, new_name):
     context.devices.rename_device_by_imei(imei, new_name)
