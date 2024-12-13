@@ -71,7 +71,7 @@ def click_button(context, button_name):
 def click_element_by_name(context, element_name):
     if element_name.lower() == "forgot password":
         context.login_page.click_forgot_password()
-        context.forgot_password_page = ForgotPasswordPage(context.driver)
+        context.forgot_password_page = ForgotPasswordPage(context.driver, context.logger)
         context.current_page = context.forgot_password_page
         context.forgot_password_page.verify_page()
     else:
