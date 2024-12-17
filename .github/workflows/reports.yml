@@ -23,6 +23,19 @@ jobs:
         pip install -r requirements.txt
         pip install allure-behave
 
+    - name: Install Allure
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+        
+    - name: Install Allure CLI
+      run: |
+        wget https://github.com/allure-framework/allure2/releases/download/2.20.1/allure-2.20.1.tgz
+        tar -xvzf allure-2.20.1.tgz
+        sudo mv allure-2.20.1 /opt/allure
+        sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
+
     - name: Run Tests with Behave
       run: |
         mkdir reports
