@@ -4,12 +4,7 @@ from behave import step
 
 from pages.forgot_password import ForgotPasswordPage
 from pages.profile import ProfilePage
-
-
-# from selenium.webdriver import Keys
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support import expected_conditions as EC
-# from selenium.webdriver.support.wait import WebDriverWait
+import allure
 
 
 @step('Open "{env}" environment')
