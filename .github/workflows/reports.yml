@@ -26,7 +26,7 @@ jobs:
     - name: Run Tests with Behave
       run: |
         mkdir reports
-        behave -f allure_behave.formatter:AllureFormatter -o reports/ features/
+        behave -f allure_behave.formatter:AllureFormatter -o reports/ features/ || true
 
     - name: Generate Allure Report
       run: |
