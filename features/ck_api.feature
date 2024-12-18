@@ -15,7 +15,7 @@ Feature: Test API
   Scenario: EMULATE Device heartbeat message
     Given Create new heartbeat message for device with following data
       | key       | value           |
-      | imei      | 999992951664148 |
+      | imei      | 333333333333351 |
       | date      | 20241122        |
       | latitude  | 37.770198       |
       | longitude | -121.641856     |
